@@ -6,7 +6,7 @@ var productController = require("./controller/productController");
 router.get("/", function (req, res, next) {
   res.json({
     test: true,
-    message: "holy shit batman!"
+    message: "Samantha mahal ko"
   });
 });
 router.get("/get-all-products", function (req, res) {
