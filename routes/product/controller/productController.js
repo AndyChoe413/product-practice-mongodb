@@ -46,6 +46,17 @@ module.exports = {
       }
     );
   },
+
+  getProductById: function (id, callback) {
+    Product.findById(id, function (err, payload) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, payload);
+      }
+    })
+  },
+
   deleteProductByID: function (id, callback) {
     Product.findByIdAndRemove({ _id: id }, function (err, deletedPayload) {
       if (err) {

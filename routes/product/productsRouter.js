@@ -6,9 +6,10 @@ var productController = require("./controller/productController");
 router.get("/", function (req, res, next) {
   res.json({
     test: true,
-    message: "Samantha mahal ko"
+    message: "Samantha mahal kita"
   });
 });
+
 router.get("/get-all-products", function (req, res) {
   productController.getAllProducts(function (err, payload) {
     if (err) {
@@ -41,6 +42,16 @@ router.put("/update-product-by-id/:id", function (req, res) {
       }
     }
   );
+});
+
+router.get('/get-product-by-id/:id', function (req, res) {
+  productController.getProductById(req.params.id, function (err, payload) {
+    if (err) {
+      res.status(500).json({ message: "Error", error: err });
+    } else {
+      res.json({ message: "success", data: payload });
+    }
+  })
 });
 
 router.delete("/delete-product-by-id/:id", function (req, res) {
